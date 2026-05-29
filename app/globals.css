@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Colores SAREM */
+  --color-primary: #0a0d6f;
+  --color-primary-container: #252a83;
+  --color-secondary: #00677e;
+  --color-secondary-fixed: #b5ebff;
+  --color-secondary-container: #6adafd;
+  --color-success-mint: #8fdab6;
+  --color-deep-navy-dark: #17254a;
+  --color-surface: #f6faff;
+  --color-surface-white: #ffffff;
+  --color-surface-container: #e7eff7;
+  --color-on-primary: #ffffff;
+  --color-on-surface: #151d22;
+  --color-on-surface-variant: #464652;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Font Families */
+  --font-kanit: "Kanit", sans-serif;
+  --font-redonda: "Redonda", serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: var(--font-kanit);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Kanit font weights */
+.font-kanit-thin { font-weight: 100; }
+.font-kanit-light { font-weight: 300; }
+.font-kanit-regular { font-weight: 400; }
+.font-kanit-medium { font-weight: 500; }
+.font-kanit-semibold { font-weight: 600; }
+.font-kanit-bold { font-weight: 700; }
+.font-kanit-extrabold { font-weight: 800; }
+.font-kanit-black { font-weight: 900; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-secondary-fixed);
+  color: var(--color-primary);
 }
