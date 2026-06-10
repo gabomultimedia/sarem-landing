@@ -115,28 +115,29 @@ function PlanCard({ plan, onAction }: { plan: Plan; onAction: () => void }) {
         </span>
       )}
 
-      <div className="pr-24">
+      <div className={plan.highlight ? "pr-24" : ""}>
         <h3 className="text-2xl font-kanit-bold text-primary">{plan.name}</h3>
         <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">{plan.ideal}</p>
       </div>
 
-      <div className="mt-6 grid grid-cols-2 gap-3">
-        <div className="rounded-2xl bg-surface p-4">
-          <p className="text-xs uppercase tracking-wider text-on-surface-variant">Costo mensual</p>
-          <p className="mt-2 text-lg font-kanit-semibold text-primary">{plan.price}</p>
+      <div className="mt-6 rounded-2xl bg-surface p-5">
+        <p className="text-xs uppercase tracking-wider text-on-surface-variant">Costo mensual</p>
+        <p className="mt-2 text-3xl font-kanit-bold text-primary">{plan.price}</p>
+      </div>
+
+      <div className="mt-4 space-y-3">
+        <div className="flex items-center justify-between gap-4 rounded-2xl border border-surface-container bg-white px-4 py-3">
+          <span className="text-sm text-on-surface-variant">Usuarios incluidos</span>
+          <span className="text-sm font-kanit-semibold text-primary">{plan.users}</span>
         </div>
-        <div className="rounded-2xl bg-surface p-4">
-          <p className="text-xs uppercase tracking-wider text-on-surface-variant">Usuarios</p>
-          <p className="mt-2 text-lg font-kanit-semibold text-primary">{plan.users}</p>
-        </div>
-        <div className="col-span-2 rounded-2xl bg-surface p-4">
-          <p className="text-xs uppercase tracking-wider text-on-surface-variant">Almacenamiento</p>
-          <p className="mt-2 text-lg font-kanit-semibold text-primary">{plan.storage}</p>
+        <div className="flex items-center justify-between gap-4 rounded-2xl border border-surface-container bg-white px-4 py-3">
+          <span className="text-sm text-on-surface-variant">Almacenamiento</span>
+          <span className="text-sm font-kanit-semibold text-primary">{plan.storage}</span>
         </div>
       </div>
 
       <div className="mt-6">
-        <p className="text-xs uppercase tracking-wider text-on-surface-variant mb-3">Funcionalidades</p>
+        <p className="text-xs uppercase tracking-wider text-on-surface-variant mb-3">Incluye</p>
         <FeatureList features={plan.features} />
       </div>
 
