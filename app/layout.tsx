@@ -13,6 +13,7 @@ const seoMetadata = {
   title: "SAREM | Sistema de Gestión Médica Inteligente con IA para Clínicas en México",
   description:
     "SAREM es el sistema EMR dinámico con asistente IA de WhatsApp que transforma la gestión de clínicas médicas en México. Automatiza procesos, mejora la visibilidad y optimiza la experiencia del paciente. Prueba gratis.",
+  metadataBase: new URL("https://sarem.mx"),
   keywords: [
     "sistema de gestión médica",
     "EMR México",
@@ -80,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-MX">
+    <html lang="es-MX" className={kanit.variable}>
       <head>
         {/* Schema.org JSON-LD */}
         <script

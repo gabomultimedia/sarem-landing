@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle, PlayCircle, FileText } from "lucide-react";
+import { MessageCircle, Mail, Home } from "lucide-react";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
@@ -11,20 +11,21 @@ const actions = [
     description: "Resuelve dudas al instante con nuestro equipo.",
     href: "https://wa.me/5215512345678",
     color: "bg-green-500",
+    external: true,
   },
   {
-    icon: PlayCircle,
-    title: "Ver Video Demo",
-    description: "Conoce SAREM en acción en 3 minutos.",
-    href: "#",
+    icon: Mail,
+    title: "Escribir por correo",
+    description: "Mándanos un mensaje a contacto@abundiss.com.",
+    href: "mailto:contacto@abundiss.com",
     color: "bg-blue-500",
   },
   {
-    icon: FileText,
-    title: "Descargar Brochure",
-    description: "PDF con todas las características.",
-    href: "#",
-    color: "bg-purple-500",
+    icon: Home,
+    title: "Volver al inicio",
+    description: "Regresa a la página principal y revisa el sistema.",
+    href: "/",
+    color: "bg-primary",
   },
 ];
 
@@ -35,8 +36,8 @@ export default function ActionCards() {
         <ScrollReveal key={action.title} delay={0.3 + index * 0.1}>
           <motion.a
             href={action.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={action.external ? "_blank" : undefined}
+            rel={action.external ? "noopener noreferrer" : undefined}
             className="group bg-surface-white rounded-2xl p-6 border border-surface-container hover:border-secondary-fixed hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center"
             whileHover={{ y: -4 }}
           >

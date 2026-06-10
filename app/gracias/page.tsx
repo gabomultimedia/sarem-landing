@@ -5,7 +5,6 @@ import Image from "next/image";
 import ConfirmationCheck from "@/components/thankyou/ConfirmationCheck";
 import ActionCards from "@/components/thankyou/ActionCards";
 import Testimonial from "@/components/thankyou/Testimonial";
-import ScrollReveal from "@/components/animations/ScrollReveal";
 
 export default function GraciasPage() {
   return (
@@ -51,7 +50,7 @@ export default function GraciasPage() {
           </h1>
           <p className="text-lg text-on-surface-variant font-kanit-light max-w-md mx-auto">
             Gracias por tu interés en SAREM. Nuestro equipo se pondrá en contacto
-            contigo en las próximas 24 horas.
+            contigo en las próximas 24 horas por correo o WhatsApp.
           </p>
         </motion.div>
 
@@ -79,7 +78,7 @@ export default function GraciasPage() {
       {/* Minimal footer */}
       <footer className="py-6 text-center border-t border-surface-container">
         <div className="flex items-center justify-center gap-6 text-sm text-on-surface-variant">
-          <a href="mailto:hola@sarem.mx" className="hover:text-secondary transition-colors">
+          <a href="mailto:contacto@abundiss.com" className="hover:text-secondary transition-colors">
             Contacto
           </a>
         </div>

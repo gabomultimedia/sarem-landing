@@ -14,13 +14,13 @@ const problems = [
     icon: Database,
     title: "Islas de Información",
     description:
-      "Cadadoctor tiene su propia tabla de Excel. No hay forma de tener una visión completa del paciente.",
+      "Cada doctor tiene su propia tabla de Excel. No hay forma de tener una visión completa del paciente.",
   },
   {
     icon: FileText,
     title: "Laberinto Administrativo",
     description:
-      "Horas perdidas entre papeles, firmas y approvals. Tu staff gasta más tiempo administrando que atendiendo.",
+      "Horas perdidas entre papeles, firmas y autorizaciones. Tu staff gasta más tiempo administrando que atendiendo.",
   },
 ];
 

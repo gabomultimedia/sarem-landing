@@ -3,8 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
-import ScrollReveal from "@/components/animations/ScrollReveal";
+import { ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import DemoModal from "@/components/ui/DemoModal";
 
@@ -93,9 +92,8 @@ export default function Hero() {
                   className="ml-2 group-hover:translate-x-1 transition-transform"
                 />
               </Button>
-              <Button variant="outline" size="lg" className="group">
-                <Play size={18} className="mr-2" />
-                Ver Video
+              <Button as="a" href="#precios" variant="outline" size="lg">
+                Ver planes
               </Button>
             </motion.div>
 

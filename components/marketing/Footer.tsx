@@ -10,7 +10,7 @@ const footerLinks = {
     { label: "FAQ", href: "#faq" },
   ],
   contacto: [
-    { label: "Contacto", href: "mailto:hola@sarem.mx" },
+    { label: "Contacto", href: "mailto:contacto@abundiss.com" },
     { label: "WhatsApp", href: "https://wa.me/5215512345678" },
   ],
 };
@@ -35,7 +35,7 @@ export default function Footer() {
               El sistema de gestión médica inteligente para clínicas modernas.
             </p>
             <p className="text-white/40 text-xs font-kanit-light">
-              hola@sarem.mx
+              contacto@abundiss.com
             </p>
           </div>
 

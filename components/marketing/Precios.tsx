@@ -1,149 +1,298 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { useState } from "react";
+import { Check, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import Button from "@/components/ui/Button";
+import DemoModal from "@/components/ui/DemoModal";
 
-const plans = [
+type Plan = {
+  name: string;
+  ideal: string;
+  price: string;
+  users: string;
+  storage: string;
+  features: string[];
+  highlight?: boolean;
+};
+
+const plans: Plan[] = [
   {
-    name: "Básico",
-    price: "2,295",
-    period: "mes",
-    description: "Para consultorios individuales",
+    name: "Sistema Básico",
+    ideal: "Ideal para consultorios y médicos independientes",
+    price: "$2,295 MXN / mes",
+    users: "3 usuarios",
+    storage: "2 GB",
     features: [
-      "Hasta 100 pacientes",
-      "Agenda básica",
-      "Expediente electrónico",
-      "1 usuario",
-      "Soporte por email",
-    ],
-  },
-  {
-    name: "Intermedio",
-    price: "3,000",
-    period: "mes",
-    description: "Para clínicas en crecimiento",
-    features: [
-      "Hasta 500 pacientes",
-      "Agenda inteligente",
-      "Expediente + notas evolutivas",
-      "5 usuarios",
-      "WhatsApp IA básico",
+      "Agenda y citas",
+      "Expediente clínico ilimitado",
+      "Historia clínica y notas de evolución",
+      "Recetas y archivos básicos",
+      "Caja, pagos, ingresos y egresos",
       "Reportes básicos",
+      "Usuarios y accesos",
+      "Asistente Ejecutivo de IA (inicial)",
     ],
-    popular: true,
   },
   {
-    name: "Avanzado",
-    price: "4,000",
-    period: "mes",
-    description: "Para clínicas establecidas",
+    name: "Sistema Intermedio",
+    ideal: "Ideal para clínicas con staff, inventario y comisiones",
+    price: "$3,000 MXN / mes",
+    users: "5 usuarios",
+    storage: "4 GB",
     features: [
-      "Pacientes ilimitados",
-      "Agenda + recueropardatorios",
-      "Expediente completo",
-      "20 usuarios",
-      "WhatsApp IA avanzado",
-      "Reportes avanzados",
-      "API integrations",
-      "Support priority 24/7",
+      "Todo lo del Sistema Básico",
+      "Bodega e inventarios",
+      "Requisición de insumos",
+      "Devoluciones a almacén",
+      "Compras a proveedores",
+      "Corte de comisiones médicas",
+      "Catálogos y procesos operativos",
+      "IA avanzada + Cerebro Digital básico",
+    ],
+    highlight: true,
+  },
+  {
+    name: "Sistema Avanzado",
+    ideal: "Ideal para clínicas grandes y centros con estructura comercial",
+    price: "$4,000 MXN / mes",
+    users: "10 usuarios",
+    storage: "6 GB",
+    features: [
+      "Todo lo del Sistema Intermedio",
+      "Tablas dinámicas de comisiones",
+      "Unidad de negocio / multisucursal",
+      "Compras y control más robusto",
+      "Integración con Kommo CRM",
+      "Reportes ejecutivos avanzados",
+      "Asistente Ejecutivo de IA completo",
+      "Cerebro Digital avanzado",
+    ],
+  },
+  {
+    name: "Sistema Personalizado",
+    ideal: "A la medida para clínicas u hospitales con requerimientos especiales",
+    price: "A cotización",
+    users: "A convenir",
+    storage: "A convenir",
+    features: [
+      "Desarrollo e implementación de módulos específicos según las necesidades y flujos de trabajo de la organización.",
     ],
   },
 ];
 
-export default function Precios() {
+const benefits = [
+  "Expedientes clínicos ilimitados en todos los planes.",
+  "Infraestructura segura en la nube.",
+  "Personalización disponible según la clínica.",
+];
+
+function FeatureList({ features }: { features: string[] }) {
   return (
-    <section id="precios" className="py-20 lg:py-32 bg-gradient-to-b from-surface to-surface-container">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <ScrollReveal className="text-center mb-16">
-          <span className="text-secondary font-kanit-medium text-sm uppercase tracking-wider">
-            Precios
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-kanit-bold text-primary mt-4 mb-6">
-            Inversión simple, resultados claros
-          </h2>
-          <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">
-            Sin costos ocultos. Sin contratos a largo plazo. Cancela cuando quieras.
-          </p>
-        </ScrollReveal>
+    <ul className="space-y-2 text-sm text-on-surface-variant">
+      {features.map((feature) => (
+        <li key={feature} className="flex items-start gap-2">
+          <Check size={16} className="mt-0.5 flex-shrink-0 text-success-mint" />
+          <span>{feature}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {plans.map((plan, index) => (
-            <ScrollReveal key={plan.name} delay={index * 0.1}>
-              <motion.div
-                whileHover={{ y: plan.popular ? -8 : -4 }}
-                className={`relative h-full bg-surface-white rounded-2xl p-8 border ${
-                  plan.popular
-                    ? "border-secondary shadow-2xl shadow-secondary/20"
-                    : "border-surface-container"
-                }`}
-              >
-                {/* Popular badge */}
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="px-4 py-1 rounded-full bg-secondary text-white text-sm font-kanit-medium">
-                      Más Popular
-                    </span>
-                  </div>
-                )}
+export default function Precios() {
+  const [demoModalOpen, setDemoModalOpen] = useState(false);
 
-                {/* Plan header */}
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-kanit-semibold text-primary mb-2">
-                    {plan.name}
-                  </h3>
-                  <p className="text-sm text-on-surface-variant mb-4">
-                    {plan.description}
-                  </p>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-4xl font-kanit-bold text-primary">
-                      ${plan.price}
-                    </span>
-                    <span className="text-on-surface-variant ml-1">/{plan.period}</span>
-                  </div>
-                </div>
+  return (
+    <>
+      <section id="precios" className="py-20 lg:py-32 bg-gradient-to-b from-surface to-surface-container">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="text-center mb-16">
+            <span className="text-secondary font-kanit-medium text-sm uppercase tracking-wider">
+              Precios
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-kanit-bold text-primary mt-4 mb-6">
+              Comparativo de soluciones para clínicas y consultorios
+            </h2>
+            <p className="text-lg text-on-surface-variant max-w-3xl mx-auto">
+              Elige el plan que mejor se adapte a tu operación, o pídelo a la medida
+              si tu clínica necesita flujos y módulos especiales.
+            </p>
+          </ScrollReveal>
 
-                {/* Features */}
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <Check
-                        size={18}
-                        className="text-success-mint flex-shrink-0 mt-0.5"
-                      />
-                      <span className="text-on-surface-variant text-sm font-kanit-light">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <Button
-                  variant={plan.popular ? "primary" : "outline"}
-                  className="w-full"
+          <ScrollReveal className="lg:hidden">
+            <div className="grid gap-6">
+              {plans.map((plan) => (
+                <motion.article
+                  key={plan.name}
+                  whileHover={{ y: -4 }}
+                  className={`relative rounded-3xl border bg-surface-white p-6 shadow-lg ${
+                    plan.highlight ? "border-secondary shadow-secondary/15" : "border-surface-container"
+                  }`}
                 >
-                  Comenzar Prueba Gratis
-                </Button>
-              </motion.div>
-            </ScrollReveal>
-          ))}
-        </div>
+                  {plan.highlight && (
+                    <span className="absolute -top-3 left-6 rounded-full bg-secondary px-3 py-1 text-xs font-kanit-semibold text-white">
+                      Más recomendado
+                    </span>
+                  )}
+                  <div className="mb-5">
+                    <h3 className="text-xl font-kanit-bold text-primary">{plan.name}</h3>
+                    <p className="mt-1 text-sm text-on-surface-variant">{plan.ideal}</p>
+                  </div>
 
-        {/* Guarantee note */}
-        <ScrollReveal className="text-center mt-12">
-          <p className="text-on-surface-variant text-sm">
-            ¿No estás seguro?{" "}
-            <span className="text-secondary font-kanit-medium">
-              Prueba gratis 14 días
-            </span>{" "}
-            — sin compromiso.
-          </p>
-        </ScrollReveal>
-      </div>
-    </section>
+                  <div className="grid grid-cols-2 gap-3 mb-5">
+                    <div className="rounded-2xl bg-surface p-4">
+                      <p className="text-xs uppercase tracking-wider text-on-surface-variant">
+                        Costo mensual
+                      </p>
+                      <p className="mt-2 text-base font-kanit-semibold text-primary">{plan.price}</p>
+                    </div>
+                    <div className="rounded-2xl bg-surface p-4">
+                      <p className="text-xs uppercase tracking-wider text-on-surface-variant">
+                        Usuarios
+                      </p>
+                      <p className="mt-2 text-base font-kanit-semibold text-primary">{plan.users}</p>
+                    </div>
+                    <div className="col-span-2 rounded-2xl bg-surface p-4">
+                      <p className="text-xs uppercase tracking-wider text-on-surface-variant">
+                        Almacenamiento
+                      </p>
+                      <p className="mt-2 text-base font-kanit-semibold text-primary">{plan.storage}</p>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl bg-surface p-4">
+                    <p className="text-xs uppercase tracking-wider text-on-surface-variant mb-3">
+                      Funcionalidades
+                    </p>
+                    <FeatureList features={plan.features} />
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal className="hidden lg:block">
+            <div className="overflow-hidden rounded-[2rem] border border-surface-container bg-surface-white shadow-2xl">
+              <div className="overflow-x-auto">
+                <table className="min-w-[1200px] w-full border-collapse">
+                  <thead>
+                    <tr className="bg-surface">
+                      <th className="w-56 px-6 py-5 text-left text-sm font-kanit-semibold text-primary uppercase tracking-wider">
+                        Característica
+                      </th>
+                      {plans.map((plan) => (
+                        <th
+                          key={plan.name}
+                          className={`px-6 py-5 text-left ${
+                            plan.highlight ? "bg-secondary-fixed/15" : ""
+                          }`}
+                        >
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <div className="text-xl font-kanit-bold text-primary">{plan.name}</div>
+                              <p className="mt-1 text-sm text-on-surface-variant">{plan.ideal}</p>
+                            </div>
+                            {plan.highlight && (
+                              <span className="rounded-full bg-secondary px-3 py-1 text-xs font-kanit-semibold text-white">
+                                Más recomendado
+                              </span>
+                            )}
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      {
+                        label: "Costo Mensual",
+                        render: (plan: Plan) => (
+                          <span className="text-lg font-kanit-semibold text-primary">{plan.price}</span>
+                        ),
+                      },
+                      {
+                        label: "Usuarios Incluidos",
+                        render: (plan: Plan) => (
+                          <span className="text-on-surface-variant">{plan.users}</span>
+                        ),
+                      },
+                      {
+                        label: "Almacenamiento",
+                        render: (plan: Plan) => (
+                          <span className="text-on-surface-variant">{plan.storage}</span>
+                        ),
+                      },
+                      {
+                        label: "Funcionalidades",
+                        render: (plan: Plan) =>
+                          plan.features.length > 1 ? (
+                            <FeatureList features={plan.features} />
+                          ) : (
+                            <p className="text-on-surface-variant">{plan.features[0]}</p>
+                          ),
+                      },
+                    ].map((row, rowIndex) => (
+                      <tr key={row.label} className={rowIndex % 2 === 0 ? "bg-white" : "bg-surface/60"}>
+                        <th
+                          scope="row"
+                          className="border-t border-surface-container px-6 py-6 text-left align-top text-sm font-kanit-semibold text-primary"
+                        >
+                          {row.label}
+                        </th>
+                        {plans.map((plan) => (
+                          <td
+                            key={`${plan.name}-${row.label}`}
+                            className={`border-t border-surface-container px-6 py-6 align-top ${
+                              plan.highlight ? "bg-secondary-fixed/10" : ""
+                            }`}
+                          >
+                            {row.render(plan)}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal className="mt-10">
+            <div className="rounded-[2rem] border border-secondary-fixed/30 bg-surface-white p-6 lg:p-8 shadow-lg">
+              <div className="grid gap-3 md:grid-cols-3">
+                {benefits.map((benefit) => (
+                  <div
+                    key={benefit}
+                    className="flex items-start gap-3 rounded-2xl bg-surface p-4 text-sm text-on-surface-variant"
+                  >
+                    <Check size={18} className="mt-0.5 flex-shrink-0 text-success-mint" />
+                    <span>{benefit}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col items-center justify-between gap-4 text-center lg:flex-row lg:text-left">
+                <div>
+                  <h3 className="text-2xl font-kanit-bold text-primary">
+                    ¿Necesitas una propuesta alineada a tu operación?
+                  </h3>
+                  <p className="mt-2 text-on-surface-variant">
+                    Agenda una demo y te ayudamos a definir el plan correcto para tu clínica.
+                  </p>
+                </div>
+                <Button size="lg" className="group" onClick={() => setDemoModalOpen(true)}>
+                  Solicitar demo
+                  <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <DemoModal isOpen={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
+    </>
   );
 }

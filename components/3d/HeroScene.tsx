@@ -5,6 +5,24 @@ import { Float, MeshDistortMaterial } from "@react-three/drei";
 import { useRef, Suspense } from "react";
 import * as THREE from "three";
 
+const particleCount = 60;
+
+const particles = Array.from({ length: particleCount }, (_, index) => {
+  const random = (seed: number) => {
+    const value = Math.sin(index * seed) * 10000;
+    return value - Math.floor(value);
+  };
+
+  return {
+    position: [
+      (random(1.7) - 0.5) * 12,
+      (random(2.3) - 0.5) * 12,
+      (random(3.1) - 0.5) * 8,
+    ] as [number, number, number],
+    scale: random(4.2) * 0.15 + 0.05,
+  };
+});
+
 function FloatingOrb({ color, position, speed = 1, distort = 0.4 }: {
   color: string;
   position: [number, number, number];
@@ -37,23 +55,11 @@ function FloatingOrb({ color, position, speed = 1, distort = 0.4 }: {
 
 function ParticleField() {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  const count = 60;
-
-  const particles = useRef(
-    Array.from({ length: count }, () => ({
-      position: [
-        (Math.random() - 0.5) * 12,
-        (Math.random() - 0.5) * 12,
-        (Math.random() - 0.5) * 8,
-      ] as [number, number, number],
-      scale: Math.random() * 0.15 + 0.05,
-    }))
-  );
 
   useFrame((state) => {
     if (!meshRef.current) return;
     const dummy = new THREE.Object3D();
-    particles.current.forEach((particle, i) => {
+    particles.forEach((particle, i) => {
       const t = state.clock.elapsedTime;
       dummy.position.set(
         particle.position[0] + Math.sin(t + i * 0.3) * 0.3,
@@ -68,7 +74,7 @@ function ParticleField() {
   });
 
   return (
-    <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+    <instancedMesh ref={meshRef} args={[undefined, undefined, particleCount]}>
       <sphereGeometry args={[0.05, 8, 8]} />
       <meshBasicMaterial color="#b5ebff" transparent opacity={0.6} />
     </instancedMesh>

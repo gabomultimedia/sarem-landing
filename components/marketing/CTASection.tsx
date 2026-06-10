@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Shield, Lock, Award } from "lucide-react";
-import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import Button from "@/components/ui/Button";
 import DemoModal from "@/components/ui/DemoModal";

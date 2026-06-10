@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { BaseSyntheticEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -25,30 +26,20 @@ interface DemoModalProps {
 
 export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const nextUrl = "/gracias";
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<DemoFormData>({
     resolver: zodResolver(demoFormSchema),
   });
 
-  const onSubmit = async (data: DemoFormData) => {
+  const onValidSubmit = (_data: DemoFormData, event?: BaseSyntheticEvent) => {
     setIsSubmitting(true);
-    // Simular envío
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Form submitted:", data);
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    reset();
-    setTimeout(() => {
-      onClose();
-      setIsSuccess(false);
-      window.location.href = "/gracias";
-    }, 2000);
+    const form = event?.target as HTMLFormElement | undefined;
+    form?.submit();
   };
 
   return (
@@ -99,7 +90,16 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit(onSubmit)} className="p-8 space-y-5">
+              <form
+                action="https://formsubmit.co/contacto@abundiss.com"
+                method="POST"
+                onSubmit={handleSubmit(onValidSubmit)}
+                className="p-8 space-y-5"
+              >
+                <input type="hidden" name="_subject" value="Nuevo contacto desde SAREM" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value={nextUrl} />
                 {/* Nombre */}
                 <div>
                   <label
@@ -193,26 +193,21 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   type="submit"
                   size="lg"
                   className="w-full"
-                  disabled={isSubmitting || isSuccess}
+                  disabled={isSubmitting}
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <Loader2 className="animate-spin" size={20} />
                       Enviando...
                     </span>
-                  ) : isSuccess ? (
-                    "¡Enviado con éxito!"
                   ) : (
                     "Solicitar Demo"
                   )}
                 </Button>
 
                 <p className="text-center text-xs text-on-surface-variant">
-                  Al enviar aceptas nuestra{" "}
-                  <a href="#" className="text-secondary hover:underline">
-                    política de privacidad
-                  </a>
-                  .
+                  Al enviar aceptas que te contactemos por email y WhatsApp para
+                  dar seguimiento a tu solicitud.
                 </p>
               </form>
             </div>

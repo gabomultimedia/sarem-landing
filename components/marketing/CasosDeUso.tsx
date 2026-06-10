@@ -17,7 +17,7 @@ const useCases = [
   {
     icon: CreditCard,
     title: "Facturación y Cobros",
-    description: "Tiendas de pago, contratos y控制系统 de cobranza.",
+    description: "Cobros, contratos y control de cobranza centralizado.",
   },
   {
     icon: BarChart3,

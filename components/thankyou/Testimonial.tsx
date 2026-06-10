@@ -28,9 +28,9 @@ export default function Testimonial() {
         {/* Quote text */}
         <blockquote className="mt-6">
           <p className="text-lg lg:text-xl text-on-surface font-kanit-light leading-relaxed mb-6">
-            "Desde que implementamos SAREM, reducimos el tiempo de gestión
+            &ldquo;Desde que implementamos SAREM, reducimos el tiempo de gestión
             administrativa en un 70%. Mi staff tiene más tiempo para atender
-            pacientes y nosotros tenemos visibilidad completa de las operaciones."
+            pacientes y nosotros tenemos visibilidad completa de las operaciones.&rdquo;
           </p>
           <footer className="flex flex-col items-center">
             <div className="w-12 h-12 rounded-full bg-primary-container mb-3" />
