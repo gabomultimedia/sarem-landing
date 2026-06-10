@@ -10,7 +10,8 @@ type ShowcaseItem = {
   title: string;
   description: string;
   className: string;
-  aspectClassName?: string;
+  aspectClassName: string;
+  objectPosition?: string;
 };
 
 const showcaseItems: ShowcaseItem[] = [
@@ -20,54 +21,71 @@ const showcaseItems: ShowcaseItem[] = [
     description: "Vista integral del sistema para operación diaria y seguimiento clínico.",
     className: "xl:col-span-8",
     aspectClassName: "aspect-[16/10]",
+    objectPosition: "object-center",
   },
   {
     file: "4.webp",
     title: "Visión ejecutiva",
     description: "Panel con métricas clave para dirección y supervisión de la clínica.",
     className: "xl:col-span-4",
+    aspectClassName: "aspect-[4/5]",
+    objectPosition: "object-center",
   },
   {
     file: "dashboard vertical.webp",
     title: "Dashboard operativo",
     description: "Seguimiento de pendientes, citas y actividad del equipo en tiempo real.",
     className: "xl:col-span-4",
+    aspectClassName: "aspect-[4/5]",
+    objectPosition: "object-center",
   },
   {
     file: "AGENDA CELULAR 1.webp",
     title: "Agenda inteligente",
     description: "Calendario móvil para validar citas y disponibilidad desde recepción.",
     className: "xl:col-span-4",
+    aspectClassName: "aspect-[4/5]",
+    objectPosition: "object-center",
   },
   {
     file: "AGENDA CELULAR 2.webp",
     title: "Agenda clínica",
     description: "Vista diaria de pacientes y bloques de atención para el equipo médico.",
     className: "xl:col-span-4",
+    aspectClassName: "aspect-[4/5]",
+    objectPosition: "object-center",
   },
   {
     file: "pagos.webp",
     title: "Cobros y pagos",
     description: "Monitoreo de pagos, movimientos y estados financieros en móvil.",
     className: "xl:col-span-4",
+    aspectClassName: "aspect-[4/5]",
+    objectPosition: "object-center",
   },
   {
     file: "VERTICAL PAGOS.webp",
     title: "Control financiero",
     description: "Listado vertical para revisar recibos, montos y pacientes al detalle.",
     className: "xl:col-span-4",
+    aspectClassName: "aspect-[4/5]",
+    objectPosition: "object-center",
   },
   {
     file: "Ingreacion wsp.webp",
     title: "Integración WhatsApp",
     description: "Comunicación conectada para mensajes y atención asistida con el equipo.",
     className: "xl:col-span-4",
+    aspectClassName: "aspect-[4/5]",
+    objectPosition: "object-center",
   },
   {
     file: "Asistente de IA por Comando de Voz.webp",
     title: "Asistente de IA",
     description: "Soporte conversacional para agilizar tareas y consultas del personal.",
     className: "xl:col-span-4",
+    aspectClassName: "aspect-[4/5]",
+    objectPosition: "object-center",
   },
 ];
 
@@ -88,7 +106,7 @@ export default function SistemaPreview() {
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 auto-rows-max gap-6">
           {showcaseItems.map((item, index) => {
             const src = `/imgsssarem/${encodeURIComponent(item.file)}`;
             const sizes = item.aspectClassName === "aspect-[16/10]"
@@ -99,14 +117,14 @@ export default function SistemaPreview() {
               <ScrollReveal key={item.file} delay={index * 0.08} className={item.className}>
                 <motion.article
                   whileHover={{ y: -6 }}
-                  className="group relative h-full overflow-hidden rounded-3xl border border-surface-container bg-surface-white shadow-lg"
+                  className={`group relative overflow-hidden rounded-3xl border border-surface-container bg-surface-white shadow-lg ${item.aspectClassName}`}
                 >
-                  <div className={`relative ${item.aspectClassName ?? "aspect-square"}`}>
+                  <div className="absolute inset-0">
                     <Image
                       src={src}
                       alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      className={`object-cover transition-transform duration-500 group-hover:scale-[1.03] ${item.objectPosition ?? "object-center"}`}
                       sizes={sizes}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
