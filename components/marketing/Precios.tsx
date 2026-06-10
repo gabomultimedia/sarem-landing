@@ -11,6 +11,7 @@ type Plan = {
   name: string;
   ideal: string;
   price: string;
+  setup: string;
   users: string;
   storage: string;
   features: string[];
@@ -22,6 +23,7 @@ const plans: Plan[] = [
     name: "Sistema Básico",
     ideal: "Ideal para consultorios y médicos independientes",
     price: "$2,295 MXN / mes",
+    setup: "Instalación, configuración y capacitación: $14,500",
     users: "3 usuarios",
     storage: "2 GB",
     features: [
@@ -39,6 +41,7 @@ const plans: Plan[] = [
     name: "Sistema Intermedio",
     ideal: "Ideal para clínicas con staff, inventario y comisiones",
     price: "$3,000 MXN / mes",
+    setup: "Instalación, configuración y capacitación: $16,500",
     users: "5 usuarios",
     storage: "4 GB",
     features: [
@@ -57,6 +60,7 @@ const plans: Plan[] = [
     name: "Sistema Avanzado",
     ideal: "Ideal para clínicas grandes y centros con estructura comercial",
     price: "$4,000 MXN / mes",
+    setup: "Instalación, configuración y capacitación: $18,500",
     users: "10 usuarios",
     storage: "6 GB",
     features: [
@@ -74,6 +78,7 @@ const plans: Plan[] = [
     name: "Sistema Personalizado",
     ideal: "A la medida para clínicas u hospitales con requerimientos especiales",
     price: "A cotización",
+    setup: "Desarrollo e implementación de módulos específicos según requerimientos",
     users: "A convenir",
     storage: "A convenir",
     features: [
@@ -123,6 +128,7 @@ function PlanCard({ plan, onAction }: { plan: Plan; onAction: () => void }) {
       <div className="mt-6 rounded-2xl bg-surface p-5">
         <p className="text-xs uppercase tracking-wider text-on-surface-variant">Costo mensual</p>
         <p className="mt-2 text-3xl font-kanit-bold text-primary">{plan.price}</p>
+        <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{plan.setup}</p>
       </div>
 
       <div className="mt-4 space-y-3">
