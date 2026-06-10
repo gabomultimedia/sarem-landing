@@ -60,7 +60,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
 
               {/* Form */}
               <form
-                action="https://formsubmit.co/contacto@abundiss.com"
+                action="/api/contact"
                 method="POST"
                 acceptCharset="UTF-8"
                 className="p-8 space-y-5"
@@ -68,11 +68,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 <input type="hidden" name="_subject" value="Nuevo contacto desde SAREM" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
-                <input
-                  type="hidden"
-                  name="_next"
-                  value="https://sarem-landing.vercel.app/gracias"
-                />
+                <input type="hidden" name="_url" value="https://sarem-landing.vercel.app/" />
 
                 <div>
                   <label
