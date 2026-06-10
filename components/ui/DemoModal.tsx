@@ -1,23 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import type { BaseSyntheticEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Loader2 } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { X } from "lucide-react";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-
-const demoFormSchema = z.object({
-  nombre: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
-  email: z.string().email("Email inválido"),
-  telefono: z.string().min(10, "Teléfono debe tener 10 dígitos"),
-  clinica: z.string().min(2, "Nombre de clínica requerido"),
-});
-
-type DemoFormData = z.infer<typeof demoFormSchema>;
 
 interface DemoModalProps {
   isOpen: boolean;
@@ -25,23 +11,6 @@ interface DemoModalProps {
 }
 
 export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const nextUrl = "/gracias";
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<DemoFormData>({
-    resolver: zodResolver(demoFormSchema),
-  });
-
-  const onValidSubmit = (_data: DemoFormData, event?: BaseSyntheticEvent) => {
-    setIsSubmitting(true);
-    const form = event?.target as HTMLFormElement | undefined;
-    form?.submit();
-  };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -93,14 +62,14 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
               <form
                 action="https://formsubmit.co/contacto@abundiss.com"
                 method="POST"
-                onSubmit={handleSubmit(onValidSubmit)}
+                acceptCharset="UTF-8"
                 className="p-8 space-y-5"
               >
                 <input type="hidden" name="_subject" value="Nuevo contacto desde SAREM" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value={nextUrl} />
-                {/* Nombre */}
+                <input type="hidden" name="_next" value="https://sarem.mx/gracias" />
+
                 <div>
                   <label
                     htmlFor="nombre"
@@ -110,19 +79,15 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   </label>
                   <input
                     id="nombre"
+                    name="nombre"
                     type="text"
-                    {...register("nombre")}
+                    required
+                    minLength={2}
                     className="w-full px-4 py-3 rounded-xl border border-surface-container bg-surface-white text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all"
                     placeholder="Dra. María González"
                   />
-                  {errors.nombre && (
-                    <p className="mt-1 text-sm text-red-500">
-                      {errors.nombre.message}
-                    </p>
-                  )}
                 </div>
 
-                {/* Email */}
                 <div>
                   <label
                     htmlFor="email"
@@ -132,19 +97,14 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   </label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
-                    {...register("email")}
+                    required
                     className="w-full px-4 py-3 rounded-xl border border-surface-container bg-surface-white text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all"
                     placeholder="maria@clinicagf.com"
                   />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-500">
-                      {errors.email.message}
-                    </p>
-                  )}
                 </div>
 
-                {/* Teléfono */}
                 <div>
                   <label
                     htmlFor="telefono"
@@ -154,19 +114,15 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   </label>
                   <input
                     id="telefono"
+                    name="telefono"
                     type="tel"
-                    {...register("telefono")}
+                    required
+                    minLength={10}
                     className="w-full px-4 py-3 rounded-xl border border-surface-container bg-surface-white text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all"
                     placeholder="55 1234 5678"
                   />
-                  {errors.telefono && (
-                    <p className="mt-1 text-sm text-red-500">
-                      {errors.telefono.message}
-                    </p>
-                  )}
                 </div>
 
-                {/* Clínica */}
                 <div>
                   <label
                     htmlFor="clinica"
@@ -176,33 +132,17 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   </label>
                   <input
                     id="clinica"
+                    name="clinica"
                     type="text"
-                    {...register("clinica")}
+                    required
+                    minLength={2}
                     className="w-full px-4 py-3 rounded-xl border border-surface-container bg-surface-white text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all"
                     placeholder="Clínica de Medicina Familiar"
                   />
-                  {errors.clinica && (
-                    <p className="mt-1 text-sm text-red-500">
-                      {errors.clinica.message}
-                    </p>
-                  )}
                 </div>
 
-                {/* Submit */}
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <Loader2 className="animate-spin" size={20} />
-                      Enviando...
-                    </span>
-                  ) : (
-                    "Solicitar Demo"
-                  )}
+                <Button type="submit" size="lg" className="w-full">
+                  Solicitar Demo
                 </Button>
 
                 <p className="text-center text-xs text-on-surface-variant">
