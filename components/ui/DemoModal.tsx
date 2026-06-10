@@ -68,7 +68,11 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 <input type="hidden" name="_subject" value="Nuevo contacto desde SAREM" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="https://sarem.mx/gracias" />
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://sarem-landing.vercel.app/gracias"
+                />
 
                 <div>
                   <label
