@@ -129,9 +129,6 @@ export default function SistemaPreview() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
-                      <div className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-kanit-medium uppercase tracking-wider text-white/90 backdrop-blur">
-                        Captura real
-                      </div>
                       <h3 className="mt-3 text-xl font-kanit-bold text-white">{item.title}</h3>
                       <p className="mt-2 max-w-md text-sm leading-relaxed text-white/85">
                         {item.description}
