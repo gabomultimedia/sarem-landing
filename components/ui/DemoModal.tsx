@@ -65,11 +65,6 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 acceptCharset="UTF-8"
                 className="p-8 space-y-5"
               >
-                <input type="hidden" name="_subject" value="Nuevo contacto desde SAREM" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_url" value="https://sarem-landing.vercel.app/" />
-
                 <div>
                   <label
                     htmlFor="nombre"
