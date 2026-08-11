@@ -34,7 +34,6 @@ const plans: Plan[] = [
       "Caja, pagos, ingresos y egresos",
       "Reportes básicos",
       "Usuarios y accesos",
-      "Asistente Ejecutivo de IA (inicial)",
     ],
   },
   {
@@ -52,7 +51,6 @@ const plans: Plan[] = [
       "Compras a proveedores",
       "Corte de comisiones médicas",
       "Catálogos y procesos operativos",
-      "IA avanzada + Cerebro Digital básico",
     ],
     highlight: true,
   },
@@ -70,8 +68,6 @@ const plans: Plan[] = [
       "Compras y control más robusto",
       "Integración con Kommo CRM",
       "Reportes ejecutivos avanzados",
-      "Asistente Ejecutivo de IA completo",
-      "Cerebro Digital avanzado",
     ],
   },
   {

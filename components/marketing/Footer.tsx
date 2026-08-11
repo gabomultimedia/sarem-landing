@@ -11,7 +11,6 @@ const footerLinks = {
   ],
   contacto: [
     { label: "Contacto", href: "mailto:contacto@abundiss.com" },
-    { label: "WhatsApp", href: "https://wa.me/5215512345678" },
   ],
 };
 

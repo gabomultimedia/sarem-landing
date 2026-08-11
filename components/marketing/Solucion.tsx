@@ -1,6 +1,6 @@
 "use client";
 
-import { Monitor, MessageCircle, Brain } from "lucide-react";
+import { Monitor, BarChart3, ClipboardList } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
 const solutions = [
@@ -11,16 +11,16 @@ const solutions = [
       "Historial clínico electrónico adaptable a cualquier especialidad. Configúralo sin código.",
   },
   {
-    icon: MessageCircle,
-    title: "Asistente IA WhatsApp",
+    icon: BarChart3,
+    title: "Reportes Ejecutivos",
     description:
-      "Responde citas, envía recordatorios y responde preguntas frecuentes automáticamente.",
+      "Métricas operativas, ingresos y productividad del personal en paneles claros y exportables.",
   },
   {
-    icon: Brain,
-    title: "Cerebro Digital",
+    icon: ClipboardList,
+    title: "Gestión Integral",
     description:
-      "Aprende de cada interacción para predecir necesidades y optimizar procesos.",
+      "Agenda, expedientes, cobros e inventarios centralizados para operar la clínica sin fricción.",
   },
 ];
 
@@ -38,7 +38,7 @@ export default function Solucion() {
           </h2>
           <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">
             SAREM centraliza toda la información de tu clínica en una plataforma
-            inteligente que aprende y evoluciona.
+            operativa diseñada para clínicas reales en México.
           </p>
         </ScrollReveal>
 

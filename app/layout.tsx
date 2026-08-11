@@ -10,9 +10,9 @@ const kanit = Kanit({
 });
 
 const seoMetadata = {
-  title: "SAREM | Sistema de Gestión Médica Inteligente con IA para Clínicas en México",
+  title: "SAREM | Sistema de Gestión Médica para Clínicas en México",
   description:
-    "SAREM es el sistema EMR dinámico con asistente IA de WhatsApp que transforma la gestión de clínicas médicas en México. Automatiza procesos, mejora la visibilidad y optimiza la experiencia del paciente. Prueba gratis.",
+    "SAREM es el sistema EMR dinámico que transforma la gestión de clínicas médicas en México. Centraliza historias clínicas, agenda, finanzas y reportes. Automatiza procesos y mejora la experiencia del paciente. Prueba gratis.",
   metadataBase: new URL("https://sarem.mx"),
   keywords: [
     "sistema de gestión médica",
@@ -20,15 +20,12 @@ const seoMetadata = {
     "historia clínica electrónica",
     "gestión de clínicas",
     "software médico",
-    "WhatsApp IA médica",
-    "asistente virtual clínica",
     "citas médicas automatizadas",
     "facturación médica México",
     "software consultorio médico",
     "sistema hospitalario",
     "digitalización clínicas",
-    "IA healthcare México",
-    " agendamiento automático pacientes",
+    "agendamiento automático pacientes",
   ],
   authors: [{ name: "Abundiss Services", url: "https://abundiss.com" }],
   creator: "Abundiss Services",
@@ -38,9 +35,9 @@ const seoMetadata = {
     locale: "es_MX",
     url: "https://sarem.mx",
     siteName: "SAREM",
-    title: "SAREM | Sistema de Gestión Médica Inteligente con IA para Clínicas en México",
+    title: "SAREM | Sistema de Gestión Médica para Clínicas en México",
     description:
-      "El sistema EMR dinámico con asistente IA de WhatsApp que transforma la gestión de clínicas médicas en México. Automatiza procesos y mejora la atención al paciente.",
+      "El sistema EMR dinámico que transforma la gestión de clínicas médicas en México. Centraliza información clínica, agenda, finanzas y reportes en una sola plataforma.",
     images: [
       {
         url: "/og-image.png",
@@ -52,9 +49,9 @@ const seoMetadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAREM | Sistema de Gestión Médica Inteligente con IA",
+    title: "SAREM | Sistema de Gestión Médica",
     description:
-      "El sistema EMR dinámico con asistente IA de WhatsApp que transforma la gestión de clínicas médicas en México.",
+      "El sistema EMR dinámico que transforma la gestión de clínicas médicas en México. Agenda, finanzas y expedientes clínicos en un solo lugar.",
     images: ["/og-image.png"],
     creator: "@abundiss",
   },
@@ -92,7 +89,7 @@ export default function RootLayout({
               "@type": "SoftwareApplication",
               name: "SAREM",
               description:
-                "Sistema de gestión médica inteligente con asistente IA de WhatsApp para clínicas en México.",
+                "Sistema de gestión médica integral para clínicas y consultorios en México.",
               url: "https://sarem.mx",
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
@@ -145,7 +142,7 @@ export default function RootLayout({
                 "Sistema de gestión médica",
                 "EMR",
                 "Software médico",
-                "IA para salud",
+                "Historia clínica electrónica",
               ],
             }),
           }}

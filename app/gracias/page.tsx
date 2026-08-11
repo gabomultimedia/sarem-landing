@@ -50,7 +50,7 @@ export default function GraciasPage() {
           </h1>
           <p className="text-lg text-on-surface-variant font-kanit-light max-w-md mx-auto">
             Gracias por tu interés en SAREM. Nuestro equipo se pondrá en contacto
-            contigo en las próximas 24 horas por correo o WhatsApp.
+            contigo en las próximas 24 horas por correo electrónico.
           </p>
         </motion.div>
 

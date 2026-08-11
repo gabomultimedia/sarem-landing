@@ -105,7 +105,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     htmlFor="telefono"
                     className="block text-sm font-kanit-medium text-primary mb-1.5"
                   >
-                    Teléfono (WhatsApp)
+                    Teléfono de contacto
                   </label>
                   <input
                     id="telefono"
@@ -141,8 +141,8 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 </Button>
 
                 <p className="text-center text-xs text-on-surface-variant">
-                  Al enviar aceptas que te contactemos por email y WhatsApp para
-                  dar seguimiento a tu solicitud.
+                  Al enviar aceptas que te contactemos por correo electrónico y
+                  teléfono para dar seguimiento a tu solicitud.
                 </p>
               </form>
             </div>

@@ -71,22 +71,6 @@ const showcaseItems: ShowcaseItem[] = [
     aspectClassName: "aspect-[4/5]",
     objectPosition: "object-center",
   },
-  {
-    file: "Ingreacion wsp.webp",
-    title: "Integración WhatsApp",
-    description: "Comunicación conectada para mensajes y atención asistida con el equipo.",
-    className: "xl:col-span-4",
-    aspectClassName: "aspect-[4/5]",
-    objectPosition: "object-center",
-  },
-  {
-    file: "Asistente de IA por Comando de Voz.webp",
-    title: "Asistente de IA",
-    description: "Soporte conversacional para agilizar tareas y consultas del personal.",
-    className: "xl:col-span-4",
-    aspectClassName: "aspect-[4/5]",
-    objectPosition: "object-center",
-  },
 ];
 
 export default function SistemaPreview() {
@@ -101,8 +85,8 @@ export default function SistemaPreview() {
             Interfaz diseñada para la eficiencia médica
           </h2>
           <p className="text-lg text-on-surface-variant max-w-3xl mx-auto">
-            Estas capturas muestran cómo SAREM organiza agenda, pagos, paneles
-            ejecutivos y asistencia con IA en un flujo visual claro y fácil de usar.
+            Estas capturas muestran cómo SAREM organiza agenda, pagos y paneles
+            ejecutivos en un flujo visual claro y fácil de usar.
           </p>
         </ScrollReveal>
 
@@ -146,7 +130,7 @@ export default function SistemaPreview() {
             <div>
               <h3 className="text-2xl font-kanit-bold text-primary">La experiencia completa está lista para mostrarse</h3>
               <p className="mt-2 text-on-surface-variant">
-                Si quieres ver el flujo completo de agenda, cobros e IA, el siguiente paso es
+                Si quieres ver el flujo completo de agenda, cobros y reportes, el siguiente paso es
                 revisar los planes o solicitar una demo.
               </p>
             </div>

@@ -82,8 +82,8 @@ export default function Hero() {
                 variants={itemVariants}
                 className="text-lg sm:text-xl lg:text-2xl text-on-surface-variant font-kanit-light max-w-xl mb-10"
               >
-                SAREM unifica historias clínicas, citas, finanzas e IA conversacional
-                en un solo sistema inteligente que trabaja 24/7.
+                SAREM unifica historias clínicas, citas, finanzas y reportes
+                en un solo sistema diseñado para clínicas que buscan orden y eficiencia.
               </motion.p>
 
               <motion.div
@@ -153,7 +153,7 @@ export default function Hero() {
                     <p className="text-xs uppercase tracking-[0.24em] text-on-surface-variant">
                       Canales
                     </p>
-                    <p className="mt-2 text-2xl font-kanit-bold text-primary">CRM + WhatsApp</p>
+                    <p className="mt-2 text-2xl font-kanit-bold text-primary">CRM + Email</p>
                   </div>
                   <div className="rounded-2xl border border-white/80 bg-white/85 p-4 shadow-lg backdrop-blur">
                     <p className="text-xs uppercase tracking-[0.24em] text-on-surface-variant">
