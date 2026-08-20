@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
+import MetaPixel from "@/components/MetaPixel";
 import "./globals.css";
 
 const kanit = Kanit({
@@ -80,6 +81,9 @@ export default function RootLayout({
   return (
     <html lang="es-MX" className={kanit.variable}>
       <head>
+        {/* Meta Pixel (Facebook Pixel) */}
+        <MetaPixel />
+
         {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
